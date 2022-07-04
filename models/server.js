@@ -14,10 +14,43 @@ class server{
 
 
     routes(){
-        this.app.get('/', (req, res) => {
-            res.send('Hello World2')
+        this.app.get('/api', (req, res) => {
+            res.json({
+
+                ok:true,
+                msg:"peticion get",
+            })
           })
-    }
+        this.app.put('/api', (req, res) => {
+            res.json({
+
+                ok:true,
+                msg:"peticion PUT",
+            })
+          })
+        this.app.post('/api', (req, res) => {
+            res.json({
+
+                ok:true,
+                msg:"peticion POST",
+            })
+          })
+          this.app.delete('/api', (req, res) => {
+            res.json({
+              
+              ok:true,
+                msg:"peticion DELETE",
+            })
+          })
+          this.app.patch('/api', (req, res) => {
+            res.json({
+              
+              ok:true,
+                msg:"peticion PATCH",
+            })
+          })
+         
+        }
 
     listen(){
         this.app.listen(this.port,()=>{
