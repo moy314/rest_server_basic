@@ -3,9 +3,13 @@ class server{
 
     constructor(){
         this.app    = express();
-        this.routes();
         this.port   = process.env.PORT;
-
+        
+        //middlewares
+        this.middlewares();
+        
+        //rutas
+        this.routes();
     }
 
 
@@ -19,6 +23,13 @@ class server{
         this.app.listen(this.port,()=>{
             console.log(`servidor corriendo en ${this.port}`);
         });
+    }
+
+
+    middlewares(){
+        //sirviendo la carpeta public
+        this.app.use(express.static('public'));
+
     }
 
 }
