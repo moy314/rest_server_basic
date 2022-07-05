@@ -10,14 +10,15 @@ const usuariosGet = (req, res = Response) => {
     })
   }
 const usuariosPost = (req, res = Response) => {
-    const body = req.body;
+    const {nombre,edad} = req.body;
 
 
     res.json({
 
         
         msg:"peticion POST - controlador",
-        body
+        nombre:nombre,
+        edad:edad
 
     })
   }
