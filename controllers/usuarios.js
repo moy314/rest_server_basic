@@ -1,12 +1,18 @@
-const {Response} = require('express');
+const {Response,request} = require('express');
 
 
 
-const usuariosGet = (req, res = Response) => {
+const usuariosGet = (req = request , res = Response) => {
+        const {p,q,prueba,name = 'no name'} = req.query;
+
     res.json({
 
         
         msg:"peticion GET - controlador",
+        q,
+        p,
+        prueba,
+        name
     })
   }
 const usuariosPost = (req, res = Response) => {
@@ -23,10 +29,13 @@ const usuariosPost = (req, res = Response) => {
     })
   }
 const usuariosPut = (req, res = Response) => {
+    const id = req.params.id;
+
     res.json({
 
         
         msg:"peticion PUT - controlador",
+        id
     })
   }
 const usuariosDelete = (req, res = Response) => {
