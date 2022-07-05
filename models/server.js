@@ -1,12 +1,17 @@
 const express = require('express')
+var cors = require('cors')
+let rutas = require('../routes/usuarios');
+ 
 class server{
-
+    
     constructor(){
-        this.app    = express();
-        this.port   = process.env.PORT;
+        this.app          = express();
+        this.port         = process.env.PORT;
+        this.usuariosPath = '/api/users';
         
         //middlewares
         this.middlewares();
+        this.app.use(cors())
         
         //rutas
         this.routes();
@@ -14,41 +19,8 @@ class server{
 
 
     routes(){
-        this.app.get('/api', (req, res) => {
-            res.json({
-
-                ok:true,
-                msg:"peticion get",
-            })
-          })
-        this.app.put('/api', (req, res) => {
-            res.json({
-
-                ok:true,
-                msg:"peticion PUT",
-            })
-          })
-        this.app.post('/api', (req, res) => {
-            res.json({
-
-                ok:true,
-                msg:"peticion POST",
-            })
-          })
-          this.app.delete('/api', (req, res) => {
-            res.json({
-              
-              ok:true,
-                msg:"peticion DELETE",
-            })
-          })
-          this.app.patch('/api', (req, res) => {
-            res.json({
-              
-              ok:true,
-                msg:"peticion PATCH",
-            })
-          })
+        
+        this.app.use(this.usuariosPath,rutas)
          
         }
 
@@ -60,6 +32,7 @@ class server{
 
 
     middlewares(){
+        this.app.use(cors());
         //sirviendo la carpeta public
         this.app.use(express.static('public'));
 
