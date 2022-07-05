@@ -37,7 +37,7 @@ class server{
         this.app.use(express.static('public'));
 
         //parseo y lectura del body
-        this.app.use(express.json);
+        this.app.use(express.json());
 
     }
 
