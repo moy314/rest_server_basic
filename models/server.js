@@ -36,6 +36,9 @@ class server{
         //sirviendo la carpeta public
         this.app.use(express.static('public'));
 
+        //parseo y lectura del body
+        this.app.use(express.json);
+
     }
 
 }
